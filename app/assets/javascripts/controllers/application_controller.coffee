@@ -13,6 +13,11 @@ App.ApplicationController = Em.ArrayController.extend
   postDisabled: Em.computed.or('newPostIsEmpty', 'postingStatus')
   newPostInputDisabled: Em.computed.bool('postingStatus')
 
+  isParndt: (->
+    n = @getWithDefault('newNickname', '')
+    (n.match /parndt/i) || (n.match /president/i)
+  ).property('newNickname')
+
   actions:
     useNickname: ->
       newNickname = @get('newNickname')
