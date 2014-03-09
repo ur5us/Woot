@@ -34,10 +34,6 @@ App.Post.reopenClass
 
   add: (opts={})->
     Em.run =>
-      # newPost = App.Post.create()
-      # newPost.setProperties(opts)
-      # allPosts.pushObject(newPost)
-      # newPost
       new Em.RSVP.Promise (resolve,reject)=>
         $.ajax
           dataType: 'json'
