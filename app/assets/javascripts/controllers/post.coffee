@@ -10,3 +10,5 @@ App.PostController = Em.ObjectController.extend
     reply: ->
       @set('controllers.application.newBody', "@#{@get('nickname')} ")
       $('input[name="post"]').focus()
+    rewoot: ->
+      @set('controllers.application.newBody', "RW @#{@get('nickname')} \"#{@get('body')}\"")
