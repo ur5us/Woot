@@ -7,8 +7,11 @@ App.ApplicationController = Em.ArrayController.extend
   nickname: null
   sortProperties: ['createdAt']
   sortAscending:  false
+  postingStatus: false
 
-  postDisabled: (-> Em.isEmpty(@get('newBody'))).property('newBody')
+  newPostIsEmpty: (-> Em.isEmpty(@get('newBody'))).property('newBody')
+  postDisabled: Em.computed.or('newPostIsEmpty', 'postingStatus')
+  newPostInputDisabled: Em.computed.bool('postingStatus')
 
   actions:
     useNickname: ->
@@ -19,12 +22,18 @@ App.ApplicationController = Em.ArrayController.extend
 
     createPost: ->
       return if Em.isEmpty(@get('newBody'))
+      @set('postingStatus', true)
       App.Post.add
         nickname: @get('nickname')
         body: @get('newBody')
 
       .then =>
+        @set('postingStatus', false)
         @set('newBody', null)
+
+      .catch (err...)=>
+        @set('postingStatus', false)
+        console.log err...
 
     logout: ->
       @set('nickname', null)

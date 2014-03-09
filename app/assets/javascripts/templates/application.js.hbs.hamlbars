@@ -13,7 +13,7 @@
         %form.panel.new-post{_action: 'createPost on="submit"'}
           .row
             .small-12.large-12.columns
-              =hb 'input type=text name="post" value=newBody'
+              =hb 'input type=text name="post" value=newBody disabled=newPostInputDisabled'
           .row
             .small-12.large-12.columns
               %button.postfix{_action: 'createPost', bind: {disabled: 'postDisabled'}}
