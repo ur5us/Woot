@@ -1,0 +1,25 @@
+.container
+  .row
+    .large-8.small-6.columns
+      %h1 W00t!
+    .large-4.small-6.columns
+      =hb 'if hasNickname' do
+        %button.tiny.right{_action: 'logout'}
+          Log out
+  .row
+    .large-12.small-12.large-centred.columns
+      =hb 'if hasNickname' do
+
+        %form.panel.new-post{_action: 'createPost on="submit"'}
+          .row
+            .small-12.large-12.columns
+              =hb 'input type=text name="post" value=newBody'
+          .row
+            .small-12.large-12.columns
+              %button.postfix{_action: 'createPost', bind: {disabled: 'postDisabled'}}
+                W00t!
+
+        =hb 'render "posts" arrangedContent'
+
+        =hb 'else'
+        =hb 'render "userQuery"'

@@ -1,0 +1,4 @@
+.nickname-entry
+  %h1 Enter your nickname
+  %form{_action: 'useNickname on=submit'}
+    =hb 'input type=text name="nickname" value=newNickname'
