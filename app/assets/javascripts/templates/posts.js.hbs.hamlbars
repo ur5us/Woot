@@ -13,7 +13,14 @@
 
     .row
       .small-12.large-12.columns
-        %button.tiny.right{_action: "reply"} Reply
-        %button.tiny.right{_action: "rewoot"} Re-W00t
+        %ul.button-group.right
+          %li
+            %button.tiny{_action: "reply"}
+              %i.fa.fa-reply
+              Reply
+          %li
+            %button.tiny{_action: "rewoot"}
+              %i.fa.fa-retweet
+              RW
 
 

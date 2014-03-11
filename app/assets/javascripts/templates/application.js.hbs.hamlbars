@@ -4,8 +4,14 @@
       %h1 W00t!
     .large-4.small-6.columns
       =hb 'if hasNickname' do
-        %button.tiny.right{_action: 'logout'}
-          Log out
+        %ul.button-group.right
+          %li
+            %a.button.tiny{href: 'https://github.com/jamesotron/Woot'}
+              %i.fa.fa-github
+              Fork
+          %li
+            %button.tiny{_action: 'logout'}
+              Log out
   .row
     .large-12.small-12.large-centred.columns
       =hb 'if hasNickname' do
