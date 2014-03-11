@@ -1,4 +1,4 @@
-source 'http://rubygems.rc/'
+source 'https://rubygems.org/'
 ruby '2.1.1'
 
 gem 'rails', '4.0.3'
@@ -7,7 +7,7 @@ gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'thin'
 gem 'haml-rails'
-gem 'faye-rails'
+gem 'faye-rails', github: 'jamesotron/faye-rails', branch: 'middleware'
 
 # Assets
 gem 'sass-rails', '~> 4.0.0'
