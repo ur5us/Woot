@@ -1,5 +1,6 @@
 .post
   .nickname
+    color: rgba(0,0,0,0.8)
     font:
       weight: bold
     @media #{$small-only}
@@ -8,6 +9,7 @@
       @include grid-column(6)
 
   .time-ago
+    color: rgba(0,0,0,0.6)
     font:
       style: italic
     @media #{$small-only}
@@ -19,6 +21,7 @@
   .body
     font:
       size: larger
+      family: $paragraph-font-family
     margin:
       top: 1em
       bottom: 1em
