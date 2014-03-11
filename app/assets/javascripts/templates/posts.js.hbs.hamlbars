@@ -1,14 +1,13 @@
 =hb 'each post in controller itemController="post"' do
   %div{bind: {class: ':panel :post mentionsMe:callout::'}}
     .row
-      .small-8.large-8.columns.nickname
+      .nickname
         =precede '@' do
           =hb 'post.nickname'
-      .small-4.large-4.columns.time-ago
-        .right
-          =hb 'timeAgo post.createdAt App.clock'
+      .time-ago
+        =hb 'timeAgo post.createdAt App.clock'
     .row
-      .small-12.large-12.columns.body
+      .body
         =hb 'post.body'
 
     .row

@@ -2,13 +2,24 @@
   .nickname
     font:
       weight: bold
+    @media #{$small-only}
+      @include grid-column(12)
+    @media #{$medium-up}
+      @include grid-column(6)
 
   .time-ago
     font:
       style: italic
+    @media #{$small-only}
+      @include grid-column(12)
+    @media #{$medium-up}
+      @include grid-column(6)
+      text-align: right
 
   .body
     font:
       size: larger
     margin:
       top: 1em
+      bottom: 1em
+    @include grid-column(12)
