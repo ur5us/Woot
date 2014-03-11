@@ -13,6 +13,13 @@ App.Post = Em.Object.extend
   ).property('updated_at')
 
 App.Post.reopenClass
+
+  mergePost: (attributes)->
+    return if allPosts.anyBy('id', attributes.id)
+    newPost = App.Post.create()
+    newPost.setProperties attributes
+    allPosts.pushObject(newPost)
+
   all: ->
     Em.run =>
       new Em.RSVP.Promise (resolve,reject)=>
@@ -22,10 +29,7 @@ App.Post.reopenClass
           type:     'GET'
           success:  (data)=>
             for post in data.posts
-              continue if allPosts.anyBy('id', post.posts.id)
-              newPost = App.Post.create()
-              newPost.setProperties post.posts
-              allPosts.pushObject(newPost)
+              @mergePost(post.posts)
             resolve(allPosts)
 
           error:   (xhr,status,err)=>
@@ -41,10 +45,7 @@ App.Post.reopenClass
           url:      '/posts'
           type:     'POST'
           success:  (data)=>
-            newPost = App.Post.create()
-            newPost.setProperties data
-            allPosts.pushObject(newPost)
-            resolve(newPost)
+            resolve @mergePost(data)
 
           error:   (xhr,status,err)=>
             console.log xhr,status,err

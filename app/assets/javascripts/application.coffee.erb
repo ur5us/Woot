@@ -18,11 +18,16 @@ this.App = Ember.Application.create
   ready: ->
     @scheduleClockUpdate()
 
+    client = new Faye.Client '/faye', timeout: 25, retry: 5
+    subscription = client.subscribe '/posts', (message)->
+      App.Post.mergePost message
+
+    @set('fayeClient', client)
+    @set('fayeSubscription', subscription)
+
   scheduleClockUpdate: ->
     Em.run.later(@, @updateGlobalClock, 5000)
 
   updateGlobalClock: ->
     @incrementProperty('clock')
-    Em.run.once ->
-      App.Post.all()
     @scheduleClockUpdate()

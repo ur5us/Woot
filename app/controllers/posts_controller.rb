@@ -1,3 +1,6 @@
+# Just ensure that our RT controller is ready.
+RealtimePostController
+
 class PostsController < ApplicationController
   respond_to :json
 

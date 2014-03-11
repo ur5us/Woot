@@ -7,7 +7,9 @@ gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'thin'
 gem 'haml-rails'
-gem 'faye-rails', github: 'jamesotron/faye-rails', branch: 'middleware'
+gem 'faye-rails', '~> 2.0.0'
+gem 'micro_token'
+gem 'pry-byebug'
 
 # Assets
 gem 'sass-rails', '~> 4.0.0'
